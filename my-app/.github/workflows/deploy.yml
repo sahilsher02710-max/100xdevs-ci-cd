@@ -24,5 +24,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
-          script: whoami
+          script: |
+            cd ~/100xdevs-ci-cd
+            git pull origin main
+            pnpm install
+            pnpm build
+            pnpm run start
       
